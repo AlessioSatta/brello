@@ -1,0 +1,34 @@
+import { ColumnInfo, IDataProvider } from "../dataProvider/index";
+import { IColumn, ITask } from "../interfaces/index";
+import { Task } from "./task";
+
+export class Column implements IColumn {
+  private readonly _columnInfo: ColumnInfo;
+  private readonly _dataProvider: IDataProvider;
+
+  public constructor(columnInfo: ColumnInfo, dataProvider: IDataProvider) {
+    this._columnInfo = columnInfo;
+    this._dataProvider = dataProvider;
+  }
+  deleteTask(id: string): void {}
+
+  public get title(): string {
+    return this._columnInfo.title;
+  }
+
+  createTask(title: string): ITask {
+    const dbTask = this._dataProvider.createTask(
+      title,
+      this._columnInfo.boardId,
+      this._columnInfo.id
+    );
+    return new Task(dbTask, this._dataProvider);
+  }
+  getTasks(): ITask[] {
+    const dbTasks = this._dataProvider.getColumnTasks(this._columnInfo.id);
+    return dbTasks.map((a) => new Task(a, this._dataProvider));
+  }
+  updateTitle(title: string): void {
+    this._dataProvider.updateColumnTitle(this._columnInfo.id, title);
+  }
+}

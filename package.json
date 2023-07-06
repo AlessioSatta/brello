@@ -1,0 +1,16 @@
+{
+  "name": "logic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/fakeMain.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsx": "3.12.7",
+    "typescript": "5.1.6"
+  }
+}
