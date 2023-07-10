@@ -12,26 +12,33 @@ let Boards: BoardInfo[] = [
 
 let Columns: ColumnInfo[] = [
   { boardId: "1", id: "1", title: "Column 1" },
-  { boardId: "2", id: "2", title: "Column 1" },
+  { boardId: "1", id: "2", title: "Column 2" },
+  { boardId: "2", id: "3", title: "Column 2" },
 ];
 
 let Tasks: TaskInfo[] = [
   { id: "1", title: "Task 1", boardId: "1", columnId: "1" },
   { id: "2", title: "Task 2", boardId: "1", columnId: "1" },
-  { id: "3", title: "Task 3", boardId: "1", columnId: "1" },
+  { id: "3", title: "Task 3", boardId: "1", columnId: "2" },
+  { id: "4", title: "Task 4", boardId: "2", columnId: "3" },
 ];
 
 export class FakeDataProvider implements IDataProvider {
-  deleteColumn(columnId: string): void {
+  public updateTaskColumn(taskId: string, targetColumnId: string): void {
+    const taskToUpdateColumn = Tasks.find((a) => a.id == taskId);
+    if (taskToUpdateColumn) taskToUpdateColumn.columnId = targetColumnId;
+  }
+
+  public deleteColumn(columnId: string): void {
     const columnToDelete = Columns.find((a) => a.id == columnId);
     if (columnToDelete) Columns.splice(Columns.indexOf(columnToDelete), 1);
   }
-  deleteTask(taskId: string): void {
+  public deleteTask(taskId: string): void {
     const taskToDelete = Tasks.find((a) => a.id == taskId);
     if (taskToDelete) Tasks.splice(Tasks.indexOf(taskToDelete), 1);
   }
 
-  deleteBoard(boardId: string): void {
+  public deleteBoard(boardId: string): void {
     const boardToDelete = Boards.find((a) => a.id == boardId);
     if (boardToDelete) Boards.splice(Boards.indexOf(boardToDelete), 1);
     Columns = Columns.filter((a) => a.boardId != boardId);

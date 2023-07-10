@@ -10,9 +10,6 @@ export class Column implements IColumn {
     this._columnInfo = columnInfo;
     this._dataProvider = dataProvider;
   }
-  delete(): void {
-    this._dataProvider.deleteColumn(this._columnInfo.id);
-  }
 
   public get title(): string {
     return this._columnInfo.title;
@@ -25,6 +22,10 @@ export class Column implements IColumn {
       title
     );
     return new Task(dbTask, this._dataProvider);
+  }
+
+  delete(): void {
+    this._dataProvider.deleteColumn(this._columnInfo.id);
   }
 
   getTasks(): ITask[] {

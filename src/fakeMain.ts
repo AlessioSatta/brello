@@ -35,6 +35,10 @@ let taskToDelete = myTasks[0];
 taskToDelete.delete();
 myTasks = myFirstColumn.getTasks();
 console.log("List of tasks:", myTasks.map((a) => a.title).join(", "));
+let taskToUpdateColumn = myTasks[0];
+let targetColumnId = "3";
+taskToUpdateColumn.updateTaskColumn(targetColumnId);
+console.log("task status updated", taskToUpdateColumn);
 
 console.log("----");
 

@@ -9,12 +9,16 @@ export class Task implements ITask {
     this._taskInfo = taskInfo;
     this._dataProvider = dataProvider;
   }
+
+  public get title(): string {
+    return this._taskInfo.title;
+  }
   delete(): void {
     this._dataProvider.deleteTask(this._taskInfo.id);
   }
 
-  public get title(): string {
-    return this._taskInfo.title;
+  updateTaskColumn(targetColumnId: string): void {
+    this._dataProvider.updateTaskColumn(this._taskInfo.id, targetColumnId);
   }
 
   updateTitle(title: string): void {

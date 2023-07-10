@@ -12,5 +12,6 @@ export interface IDataProvider {
   getColumnTasks(columnId: string): TaskInfo[];
   upateBoardTitle(boardId: string, title: string): void;
   updateColumnTitle(columnId: string, title: string): void;
+  updateTaskColumn(taskId: string, targetColumnId: string): void;
   updateTaskTitle(taskId: string, title: string): void;
 }
