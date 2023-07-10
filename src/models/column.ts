@@ -11,6 +11,9 @@ export class Column implements IColumn {
     this._dataProvider = dataProvider;
   }
 
+  public get id(): string {
+    return this._columnInfo.id;
+  }
   public get title(): string {
     return this._columnInfo.title;
   }

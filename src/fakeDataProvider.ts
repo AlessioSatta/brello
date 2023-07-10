@@ -84,8 +84,8 @@ export class FakeDataProvider implements IDataProvider {
     return Boards;
   }
 
-  public getColumns(columnId: string): ColumnInfo[] {
-    return Columns.filter((a) => a.id == columnId);
+  public getColumns(boardId: string): ColumnInfo[] {
+    return Columns.filter((a) => a.boardId == boardId);
   }
 
   public getColumnTasks(columnId: string): TaskInfo[] {

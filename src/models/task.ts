@@ -1,5 +1,6 @@
 import { IDataProvider, TaskInfo } from "../dataProvider/index";
 import { ITask } from "../interfaces/index";
+import { Column } from "./column";
 
 export class Task implements ITask {
   private readonly _taskInfo: TaskInfo;
@@ -17,8 +18,8 @@ export class Task implements ITask {
     this._dataProvider.deleteTask(this._taskInfo.id);
   }
 
-  updateTaskColumn(targetColumnId: string): void {
-    this._dataProvider.updateTaskColumn(this._taskInfo.id, targetColumnId);
+  moveToColumn(column: Column): void {
+    this._dataProvider.updateTaskColumn(this._taskInfo.id, column.id);
   }
 
   updateTitle(title: string): void {

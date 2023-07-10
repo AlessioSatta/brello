@@ -13,7 +13,7 @@ let myFirstBoard = myBoards[0];
 
 myFirstBoard.updateTitle("Nuovo titolo board");
 console.log("Selected board:", myFirstBoard.title);
-myFirstBoard.createColum("Column 2");
+myFirstBoard.createColum("Column 3");
 
 let myColumns = myFirstBoard.getColumns();
 console.log("List of columns:", myColumns.map((a) => a.title).join(", "));
@@ -36,8 +36,7 @@ taskToDelete.delete();
 myTasks = myFirstColumn.getTasks();
 console.log("List of tasks:", myTasks.map((a) => a.title).join(", "));
 let taskToUpdateColumn = myTasks[0];
-let targetColumnId = "3";
-taskToUpdateColumn.updateTaskColumn(targetColumnId);
+taskToUpdateColumn.moveToColumn(myColumns[1]);
 console.log("task status updated", taskToUpdateColumn);
 
 console.log("----");
