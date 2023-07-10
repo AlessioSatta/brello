@@ -4,19 +4,18 @@ import {
   IDataProvider,
   TaskInfo,
 } from "./dataProvider/index";
-import { IBoard, IColumn, ITask } from "./interfaces";
 
-const Boards: BoardInfo[] = [
+let Boards: BoardInfo[] = [
   { id: "1", title: "Board 1" },
   { id: "2", title: "Board 2" },
 ];
 
-const Columns: ColumnInfo[] = [
+let Columns: ColumnInfo[] = [
   { boardId: "1", id: "1", title: "Column 1" },
   { boardId: "2", id: "2", title: "Column 1" },
 ];
 
-const Tasks: TaskInfo[] = [
+let Tasks: TaskInfo[] = [
   { id: "1", title: "Task 1", boardId: "1", columnId: "1" },
   { id: "2", title: "Task 2", boardId: "1", columnId: "1" },
   { id: "3", title: "Task 3", boardId: "1", columnId: "1" },
@@ -35,6 +34,8 @@ export class FakeDataProvider implements IDataProvider {
   deleteBoard(boardId: string): void {
     const boardToDelete = Boards.find((a) => a.id == boardId);
     if (boardToDelete) Boards.splice(Boards.indexOf(boardToDelete), 1);
+    Columns = Columns.filter((a) => a.boardId != boardId);
+    Tasks = Tasks.filter((a) => a.boardId != boardId);
   }
 
   public createBoard(title: string): BoardInfo {
@@ -48,8 +49,8 @@ export class FakeDataProvider implements IDataProvider {
 
   public createColum(boardId: string, title: string): ColumnInfo {
     const column: ColumnInfo = {
-      id: this._generateId(),
       boardId,
+      id: this._generateId(),
       title,
     };
     Columns.push(column);
@@ -62,9 +63,9 @@ export class FakeDataProvider implements IDataProvider {
     title: string
   ): TaskInfo {
     const task: TaskInfo = {
-      id: this._generateId(),
       boardId,
       columnId,
+      id: this._generateId(),
       title,
     };
 

@@ -20,9 +20,9 @@ export class Column implements IColumn {
 
   createTask(title: string): ITask {
     const dbTask = this._dataProvider.createTask(
-      title,
       this._columnInfo.boardId,
-      this._columnInfo.id
+      this._columnInfo.id,
+      title
     );
     return new Task(dbTask, this._dataProvider);
   }

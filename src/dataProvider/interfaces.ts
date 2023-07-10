@@ -1,4 +1,3 @@
-import { IBoard, IColumn, ITask } from "../interfaces";
 import { BoardInfo, ColumnInfo, TaskInfo } from "./types";
 
 export interface IDataProvider {

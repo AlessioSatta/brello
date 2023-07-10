@@ -20,7 +20,7 @@ export class Board implements IBoard {
   }
 
   createColum(title: string): IColumn {
-    const dbColumn = this._dataProvider.createColum(title, this._boardInfo.id);
+    const dbColumn = this._dataProvider.createColum(this._boardInfo.id, title);
     return new Column(dbColumn, this._dataProvider);
   }
 

@@ -9,7 +9,7 @@ console.log("App is running...");
 // aggiorno il titolo della prima board
 let myBoards = myApp.getBoards();
 console.log("List of boards:", myBoards.map((a) => a.title).join(", "));
-const myFirstBoard = myBoards[0];
+let myFirstBoard = myBoards[0];
 
 myFirstBoard.updateTitle("Nuovo titolo board");
 console.log("Selected board:", myFirstBoard.title);
@@ -17,7 +17,7 @@ myFirstBoard.createColum("Column 2");
 
 let myColumns = myFirstBoard.getColumns();
 console.log("List of columns:", myColumns.map((a) => a.title).join(", "));
-const myFirstColumn = myColumns[0];
+let myFirstColumn = myColumns[0];
 console.log("Update column title:", myFirstColumn.title);
 myFirstColumn.updateTitle("Nuovo Titolo Colonna");
 console.log("New column title:", myFirstColumn.title);
@@ -26,15 +26,17 @@ console.log("List of columns:", myColumns.map((a) => a.title).join(", "));
 
 let myTasks = myFirstColumn.getTasks();
 console.log("List of tasks:", myTasks.map((a) => a.title).join(", "));
-const myFirstTask = myTasks[0];
+let myFirstTask = myTasks[0];
 console.log("Update task title:", myFirstTask.title);
 myFirstTask.updateTitle("Nuovo titolo task");
 console.log("New task title:", myFirstTask.title);
 myTasks = myFirstColumn.getTasks();
-const taskToDelete = myTasks[0];
+let taskToDelete = myTasks[0];
 taskToDelete.delete();
 myTasks = myFirstColumn.getTasks();
 console.log("List of tasks:", myTasks.map((a) => a.title).join(", "));
+
+console.log("----");
 
 myFirstBoard.delete();
 myBoards = myApp.getBoards();
@@ -49,11 +51,14 @@ console.log(
 );
 myTasks = myFirstColumn.getTasks();
 console.log(
-  "List of tasks after dele board:",
+  "List of tasks after delete board:",
   myTasks.map((a) => a.title).join(", ")
 );
 myBoards = myApp.getBoards();
 console.log("List of boards:", myBoards.map((a) => a.title).join(", "));
+const mySecondBoard = myBoards[0];
+myColumns = mySecondBoard.getColumns();
+console.log("List of columns:", myColumns.map((a) => a.title).join(", "));
 // const columnToDelete = myColumns[0];
 // myFirstBoard.deleteColumn(columnToDelete);
 // let newColumnList = myFirstBoard.getColumns();
