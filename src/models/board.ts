@@ -11,8 +11,8 @@ export class Board implements IBoard {
     this._boardInfo = boardInfo;
     this._dataProvider = dataProvider;
   }
-  deleteColumn(id: string): void {
-    throw new Error("Method not implemented.");
+  delete(): void {
+    this._dataProvider.deleteBoard(this._boardInfo.id);
   }
 
   public get title(): string {
@@ -23,6 +23,7 @@ export class Board implements IBoard {
     const dbColumn = this._dataProvider.createColum(title, this._boardInfo.id);
     return new Column(dbColumn, this._dataProvider);
   }
+
   getColumns(): IColumn[] {
     const dbColumns = this._dataProvider.getColumns(this._boardInfo.id);
     return dbColumns.map((a) => new Column(a, this._dataProvider));

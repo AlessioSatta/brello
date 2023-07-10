@@ -10,7 +10,9 @@ export class Column implements IColumn {
     this._columnInfo = columnInfo;
     this._dataProvider = dataProvider;
   }
-  deleteTask(id: string): void {}
+  delete(): void {
+    this._dataProvider.deleteColumn(this._columnInfo.id);
+  }
 
   public get title(): string {
     return this._columnInfo.title;
@@ -24,6 +26,7 @@ export class Column implements IColumn {
     );
     return new Task(dbTask, this._dataProvider);
   }
+
   getTasks(): ITask[] {
     const dbTasks = this._dataProvider.getColumnTasks(this._columnInfo.id);
     return dbTasks.map((a) => new Task(a, this._dataProvider));

@@ -8,9 +8,6 @@ export class App implements IApp {
   public constructor(dataProvider: IDataProvider) {
     this._dataProvider = dataProvider;
   }
-  public delteBoard(id: string): void {
-    throw new Error("Method not implemented.");
-  }
 
   public createBoard(title: string): IBoard {
     const dbBoard = this._dataProvider.createBoard(title);

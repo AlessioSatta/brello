@@ -4,6 +4,7 @@ import {
   IDataProvider,
   TaskInfo,
 } from "./dataProvider/index";
+import { IBoard, IColumn, ITask } from "./interfaces";
 
 const Boards: BoardInfo[] = [
   { id: "1", title: "Board 1" },
@@ -22,14 +23,20 @@ const Tasks: TaskInfo[] = [
 ];
 
 export class FakeDataProvider implements IDataProvider {
-  deleteTask(taskId: string): void {}
+  deleteColumn(columnId: string): void {
+    const columnToDelete = Columns.find((a) => a.id == columnId);
+    if (columnToDelete) Columns.splice(Columns.indexOf(columnToDelete), 1);
+  }
+  deleteTask(taskId: string): void {
+    const taskToDelete = Tasks.find((a) => a.id == taskId);
+    if (taskToDelete) Tasks.splice(Tasks.indexOf(taskToDelete), 1);
+  }
 
   deleteBoard(boardId: string): void {
-    throw new Error("Method not implemented.");
+    const boardToDelete = Boards.find((a) => a.id == boardId);
+    if (boardToDelete) Boards.splice(Boards.indexOf(boardToDelete), 1);
   }
-  deleteColumn(columnId: string): void {
-    throw new Error("Method not implemented.");
-  }
+
   public createBoard(title: string): BoardInfo {
     const board: BoardInfo = {
       id: this._generateId(),

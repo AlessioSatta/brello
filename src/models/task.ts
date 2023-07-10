@@ -9,6 +9,9 @@ export class Task implements ITask {
     this._taskInfo = taskInfo;
     this._dataProvider = dataProvider;
   }
+  delete(): void {
+    this._dataProvider.deleteTask(this._taskInfo.id);
+  }
 
   public get title(): string {
     return this._taskInfo.title;
