@@ -5,9 +5,7 @@ import { BoardInfo, IDataProvider } from "../src/dataProvider";
 describe("App", () => {
   test("getBoards", () => {
     const dataProvider: IDataProvider = {
-      getBoards: jest.fn(() => [
-        { id: "1", title: "Board 1" },
-      ]) as () => BoardInfo[],
+      getBoards: jest.fn(() => []) as IDataProvider["getBoards"],
     } as IDataProvider;
     const app = new App(dataProvider);
     app.getBoards();

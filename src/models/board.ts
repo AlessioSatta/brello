@@ -1,5 +1,5 @@
 import { IDataProvider } from "../dataProvider/interfaces";
-import { BoardInfo, ColumnInfo, TaskInfo } from "../dataProvider/types";
+import { BoardInfo } from "../dataProvider/types";
 import { IBoard, IColumn } from "../interfaces/index";
 import { Column } from "./column";
 

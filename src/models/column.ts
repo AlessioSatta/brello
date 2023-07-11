@@ -36,6 +36,7 @@ export class Column implements IColumn {
     return dbTasks.map((a) => new Task(a, this._dataProvider));
   }
   updateTitle(title: string): void {
+    this._columnInfo.title = title;
     this._dataProvider.updateColumnTitle(this._columnInfo.id, title);
   }
 }

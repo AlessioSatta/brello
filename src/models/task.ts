@@ -23,6 +23,7 @@ export class Task implements ITask {
   }
 
   updateTitle(title: string): void {
+    this._taskInfo.title = title;
     this._dataProvider.updateTaskTitle(this._taskInfo.id, title);
   }
 }
