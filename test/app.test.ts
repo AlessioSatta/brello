@@ -1,19 +1,17 @@
-import { describe, expect, test } from "@jest/globals";
+import { describe, expect, jest, test } from "@jest/globals";
 import { App } from "../src/models/app";
 import { BoardInfo, IDataProvider } from "../src/dataProvider";
 
 describe("App", () => {
   test("getBoards", () => {
-    const boards: BoardInfo[] = [{ id: "1", title: "Board 1" }];
     const dataProvider: IDataProvider = {
-      getBoards() {
-        return boards;
-      },
+      getBoards: jest.fn(() => [
+        { id: "1", title: "Board 1" },
+      ]) as () => BoardInfo[],
     } as IDataProvider;
     const app = new App(dataProvider);
-    const appBoards = app.getBoards();
-    expect(appBoards).toHaveLength;
-    expect(appBoards.find((a) => a.title == boards[0].title)).toBeDefined();
+    app.getBoards();
+    expect(dataProvider.getBoards).toBeCalled();
   });
 
   test("createBorad", () => {

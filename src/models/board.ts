@@ -11,10 +11,6 @@ export class Board implements IBoard {
     this._boardInfo = boardInfo;
     this._dataProvider = dataProvider;
   }
-  delete(): void {
-    this._dataProvider.deleteBoard(this._boardInfo.id);
-  }
-
   public get title(): string {
     return this._boardInfo.title;
   }
@@ -24,12 +20,17 @@ export class Board implements IBoard {
     return new Column(dbColumn, this._dataProvider);
   }
 
+  delete(): void {
+    this._dataProvider.deleteBoard(this._boardInfo.id);
+  }
+
   getColumns(): IColumn[] {
     const dbColumns = this._dataProvider.getColumns(this._boardInfo.id);
     return dbColumns.map((a) => new Column(a, this._dataProvider));
   }
 
   updateTitle(title: string): void {
+    this._boardInfo.title = title;
     this._dataProvider.upateBoardTitle(this._boardInfo.id, title);
   }
 }

@@ -8,7 +8,7 @@ export interface IDataProvider {
   deleteColumn(columnId: string): void;
   deleteTask(taskId: string): void;
   getBoards(): BoardInfo[];
-  getColumns(columnId: string): ColumnInfo[];
+  getColumns(boardId: string): ColumnInfo[];
   getColumnTasks(columnId: string): TaskInfo[];
   upateBoardTitle(boardId: string, title: string): void;
   updateColumnTitle(columnId: string, title: string): void;
