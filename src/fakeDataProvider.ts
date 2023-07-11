@@ -24,11 +24,6 @@ let Tasks: TaskInfo[] = [
 ];
 
 export class FakeDataProvider implements IDataProvider {
-  public updateTaskColumn(taskId: string, targetColumnId: string): void {
-    const taskToUpdateColumn = Tasks.find((a) => a.id == taskId);
-    if (taskToUpdateColumn) taskToUpdateColumn.columnId = targetColumnId;
-  }
-
   public deleteColumn(columnId: string): void {
     const columnToDelete = Columns.find((a) => a.id == columnId);
     if (columnToDelete) Columns.splice(Columns.indexOf(columnToDelete), 1);
@@ -100,6 +95,11 @@ export class FakeDataProvider implements IDataProvider {
   public updateColumnTitle(columnId: string, title: string): void {
     const column = Columns.find((a) => a.id == columnId);
     if (column) column.title = title;
+  }
+
+  public updateTaskColumn(taskId: string, targetColumnId: string): void {
+    const taskToUpdateColumn = Tasks.find((a) => a.id == taskId);
+    if (taskToUpdateColumn) taskToUpdateColumn.columnId = targetColumnId;
   }
 
   public updateTaskTitle(taskId: string, title: string): void {
