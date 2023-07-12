@@ -44,20 +44,31 @@ describe("Column", () => {
     expect(columnTasks[0].title).toBe(taskTitle);
   });
 
-  test("updateTaskTitle", () => {
-    const tasks: TaskInfo = {
-      id: "1",
-      boardId: "1",
-      columnId: "1",
-      title: "Task Title",
-    };
+  test("updateColumnTitle", () => {
     const dataProvider: IDataProvider = {
-      updateTaskTitle: jest.fn() as IDataProvider["updateTaskTitle"],
-      getColumnTasks: jest.fn(() => []) as IDataProvider["getColumnTasks"],
+      updateColumnTitle: jest.fn() as IDataProvider["updateColumnTitle"],
     } as IDataProvider;
     const column = new Column(
       { id: "1", boardId: "1", title: "Colonna 1" },
       dataProvider
     );
+    expect(column.title).toBe("Colonna 1");
+    const newColumnTitle = "Nuovo titolo colonna";
+    column.updateTitle(newColumnTitle);
+    expect(dataProvider.updateColumnTitle).toBeCalled();
+    expect(column.title).toBe(newColumnTitle);
+  });
+
+  test("deleteColumn", () => {
+    const dataProvider: IDataProvider = {
+      deleteColumn: jest.fn() as IDataProvider["deleteColumn"],
+    } as IDataProvider;
+    const column = new Column(
+      { id: "1", boardId: "1", title: "Colonna 1" },
+      dataProvider
+    );
+    expect(column).toBeInstanceOf;
+    column.delete();
+    expect(dataProvider.deleteColumn).toBeCalled();
   });
 });
