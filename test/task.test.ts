@@ -49,9 +49,9 @@ describe("Task", () => {
     const task = new Task(taskInfo, dataProvider);
     expect(column).toBeInstanceOf;
     expect(task).toBeInstanceOf;
-    const task1 = taskInfo.columnId;
-    const column1 = columnInfo.id;
-    expect(task1).not.toBe(column1);
+    const taskColumnId = taskInfo.columnId;
+    const columnId = columnInfo.id;
+    expect(taskColumnId).not.toBe(columnId);
     task.moveToColumn(column);
     expect(dataProvider.updateTaskColumn).toBeCalled();
   });
