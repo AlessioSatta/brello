@@ -42,7 +42,6 @@ describe("Task", () => {
     const columnInfo: ColumnInfo = { id: "1", boardId: "1", title: "Column 1" };
     const dataProvider: IDataProvider = {
       updateTaskColumn: jest.fn() as IDataProvider["updateTaskColumn"],
-      getColumns: jest.fn() as IDataProvider["getColumns"],
     } as IDataProvider;
 
     const column = new Column(columnInfo, dataProvider);
