@@ -7,5 +7,5 @@
     "sourceMap": true,
     "target": "ES6"
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "rollup.config.js"]
 }
