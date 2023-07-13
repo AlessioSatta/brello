@@ -1,6 +1,6 @@
 import { describe, expect, jest, test } from "@jest/globals";
 import { Board } from "../src/models/board";
-import { ColumnInfo, IDataProvider } from "../src/dataProvider";
+import { BoardInfo, ColumnInfo, IDataProvider } from "../src/dataProvider";
 
 describe("Board", () => {
   test("getColumns", () => {
@@ -49,7 +49,7 @@ describe("Board", () => {
     const dataProvider: IDataProvider = {
       deleteBoard: jest.fn() as IDataProvider["deleteBoard"],
     } as IDataProvider;
-    const board = new Board({ id: "1", title: "Board 1" }, dataProvider);
+    const board = new Board({ id: "1" } as BoardInfo, dataProvider);
     expect(board).toBeInstanceOf;
     board.delete();
     expect(dataProvider.deleteBoard).toBeCalled();

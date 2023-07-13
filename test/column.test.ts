@@ -1,16 +1,13 @@
 import { describe, expect, jest, test } from "@jest/globals";
 import { Column } from "../src/models/column";
-import { TaskInfo, IDataProvider } from "../src/dataProvider";
+import { TaskInfo, IDataProvider, ColumnInfo } from "../src/dataProvider";
 
 describe("Column", () => {
   test("getTasks", () => {
     const dataProvider: IDataProvider = {
       getColumnTasks: jest.fn(() => []) as IDataProvider["getColumnTasks"],
     } as IDataProvider;
-    const column = new Column(
-      { id: "1", boardId: "1", title: "Colonna 1" },
-      dataProvider
-    );
+    const column = new Column({ id: "1" } as ColumnInfo, dataProvider);
     column.getTasks();
     expect(dataProvider.getColumnTasks).toBeCalled();
   });
@@ -32,10 +29,7 @@ describe("Column", () => {
         return task;
       },
     } as IDataProvider;
-    const column = new Column(
-      { id: "1", boardId: "1", title: "Colonna 1" },
-      dataProvider
-    );
+    const column = new Column({ id: "1" } as ColumnInfo, dataProvider);
     const prevColumnTask = column.getTasks().length;
     const taskTitle = "Nuovo task";
     column.createTask(taskTitle);
@@ -49,7 +43,7 @@ describe("Column", () => {
       updateColumnTitle: jest.fn() as IDataProvider["updateColumnTitle"],
     } as IDataProvider;
     const column = new Column(
-      { id: "1", boardId: "1", title: "Colonna 1" },
+      { id: "1", title: "Colonna 1" } as ColumnInfo,
       dataProvider
     );
     expect(column.title).toBe("Colonna 1");
@@ -63,10 +57,7 @@ describe("Column", () => {
     const dataProvider: IDataProvider = {
       deleteColumn: jest.fn() as IDataProvider["deleteColumn"],
     } as IDataProvider;
-    const column = new Column(
-      { id: "1", boardId: "1", title: "Colonna 1" },
-      dataProvider
-    );
+    const column = new Column({ id: "1" } as ColumnInfo, dataProvider);
     expect(column).toBeInstanceOf;
     column.delete();
     expect(dataProvider.deleteColumn).toBeCalled();

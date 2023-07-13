@@ -9,7 +9,7 @@ describe("Task", () => {
       updateTaskTitle: jest.fn() as IDataProvider["updateTaskTitle"],
     } as IDataProvider;
     const task = new Task(
-      { id: "1", boardId: "1", columnId: "1", title: "Task 1" },
+      { id: "1", title: "Task 1" } as TaskInfo,
       dataProvider
     );
     expect(task.title).toBe("Task 1");
@@ -23,35 +23,24 @@ describe("Task", () => {
     const dataProvider: IDataProvider = {
       deleteTask: jest.fn() as IDataProvider["deleteTask"],
     } as IDataProvider;
-    const task = new Task(
-      { id: "1", boardId: "1", columnId: "1", title: "Task 1" },
-      dataProvider
-    );
+    const task = new Task({ id: "1" } as TaskInfo, dataProvider);
     expect(task).toBeInstanceOf;
     task.delete();
     expect(dataProvider.deleteTask).toBeCalled();
   });
 
   test("moveToColumn", () => {
-    const taskInfo: TaskInfo = {
-      id: "1",
-      boardId: "1",
-      columnId: "2",
-      title: "Task 1",
-    };
-    const columnInfo: ColumnInfo = { id: "1", boardId: "1", title: "Column 1" };
     const dataProvider: IDataProvider = {
       updateTaskColumn: jest.fn() as IDataProvider["updateTaskColumn"],
     } as IDataProvider;
-
-    const column = new Column(columnInfo, dataProvider);
-    const task = new Task(taskInfo, dataProvider);
-    expect(column).toBeInstanceOf;
-    expect(task).toBeInstanceOf;
-    const taskColumnId = taskInfo.columnId;
-    const columnId = columnInfo.id;
-    expect(taskColumnId).not.toBe(columnId);
+    const columnInfo = { id: "1" } as ColumnInfo;
+    const column = new Column(columnInfo as ColumnInfo, dataProvider);
+    const taskInfo = { id: "1" } as TaskInfo;
+    const task = new Task(taskInfo as TaskInfo, dataProvider);
     task.moveToColumn(column);
-    expect(dataProvider.updateTaskColumn).toBeCalled();
+    expect(dataProvider.updateTaskColumn).toBeCalledWith(
+      taskInfo.id,
+      columnInfo.id
+    );
   });
 });
