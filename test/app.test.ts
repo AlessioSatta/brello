@@ -1,6 +1,4 @@
-import { describe, expect, jest, test } from "@jest/globals";
-import { App } from "../src/models/app";
-import { BoardInfo, IDataProvider } from "../src/dataProvider";
+import { App, BoardInfo, IDataProvider } from "../src";
 
 describe("App", () => {
   test("getBoards", () => {

@@ -1,6 +1,4 @@
-import { describe, expect, jest, test } from "@jest/globals";
-import { Column } from "../src/models/column";
-import { TaskInfo, IDataProvider, ColumnInfo } from "../src/dataProvider";
+import { Column, ColumnInfo, IDataProvider, TaskInfo } from "../src";
 
 describe("Column", () => {
   test("getTasks", () => {

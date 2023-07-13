@@ -1,7 +1,6 @@
-import { IDataProvider } from "../dataProvider/interfaces";
-import { BoardInfo } from "../dataProvider/types";
-import { IBoard, IColumn } from "../interfaces/index";
+import { IBoard, IColumn } from "../interfaces";
 import { Column } from "./column";
+import { BoardInfo, IDataProvider } from "./data-provider";
 
 export class Board implements IBoard {
   private readonly _boardInfo: BoardInfo;

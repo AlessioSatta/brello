@@ -1,6 +1,4 @@
-import { describe, expect, jest, test } from "@jest/globals";
-import { Board } from "../src/models/board";
-import { BoardInfo, ColumnInfo, IDataProvider } from "../src/dataProvider";
+import { Board, BoardInfo, ColumnInfo, IDataProvider } from "../src";
 
 describe("Board", () => {
   test("getColumns", () => {

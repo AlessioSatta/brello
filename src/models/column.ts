@@ -1,5 +1,5 @@
-import { ColumnInfo, IDataProvider } from "../dataProvider/index";
-import { IColumn, ITask } from "../interfaces/index";
+import { IColumn, ITask } from "../interfaces";
+import { ColumnInfo, IDataProvider } from "./data-provider";
 import { Task } from "./task";
 
 export class Column implements IColumn {

@@ -1,6 +1,6 @@
-import { IDataProvider, TaskInfo } from "../dataProvider/index";
-import { ITask } from "../interfaces/index";
+import { ITask } from "../interfaces";
 import { Column } from "./column";
+import { IDataProvider, TaskInfo } from "./data-provider";
 
 export class Task implements ITask {
   private readonly _taskInfo: TaskInfo;

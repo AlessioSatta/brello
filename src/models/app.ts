@@ -1,6 +1,6 @@
-import { IDataProvider } from "../dataProvider/index";
-import { IApp, IBoard } from "../interfaces/index";
+import { IApp, IBoard } from "../interfaces";
 import { Board } from "./board";
+import { IDataProvider } from "./data-provider";
 
 export class App implements IApp {
   private readonly _dataProvider: IDataProvider;

@@ -1,7 +1,4 @@
-import { describe, expect, jest, test } from "@jest/globals";
-import { Task } from "../src/models/task";
-import { ColumnInfo, IDataProvider, TaskInfo } from "../src/dataProvider";
-import { Column } from "../src/models/column";
+import { Column, ColumnInfo, IDataProvider, Task, TaskInfo } from "../src";
 
 describe("Task", () => {
   test("updateTitle", () => {
