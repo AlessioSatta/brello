@@ -1,8 +1,12 @@
 {
   "name": "@alessiosatta/brello-business-logic",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
-  "main": "./src/models/index.ts",
+  "main": "./output/brello-business-logic.js",
+  "types": "./output/brello-business-logic.d.ts",
+  "files": [
+    "/output"
+  ],
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/fakeMain.ts",
@@ -10,7 +14,7 @@
     "test:watch": "jest --watch",
     "build": "rollup --config"
   },
-  "author": "",
+  "author": "Alessio Satta",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.22.6",
